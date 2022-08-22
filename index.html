@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+        <script>
+            var colorPicker = new iro.ColorPicker('#picker',{
+                width: 800,
+                margin: 75,
+                handleRadius: 20,
+                borderWidth: 1,
+                borderColor: "#fff",
+            })
+
+            colorPicker.on('input:end', function(color) {
+              red = color.red
+              green = color.green
+              blue = color.blue
+              fetch(`http://76.70.90.119/?r${red}g${green}b${blue}`)
+              console.log(red, '\n' ,green, '\n' ,blue, '\n')
+
+            });
+        </script>
+        <style>
+            body{
+                background-color: #171F30;
+            }
+            .wrapper{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>    
+        <div class="wrapper"> 
+            <div id="picker"></div>
+        </div> 
+    </body>
+</html>
+
